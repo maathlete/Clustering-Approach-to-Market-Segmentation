@@ -1,0 +1,10 @@
+SELECT CASE WHEN org < dest then concat(Org, Dest) else concat(Dest, org) end as ALPHAMKT
+	  ,datediff(day, cast([ProcessDate] as date), cast([DepartureDate] as date)) as DTD
+	  ,sum(cast([Seats] as float)) as SEATS
+	  ,sum(cast([CapOrLid] as float)) as CAP
+	  ,sum(cast([Seats] as float))/sum(cast([CapOrLid] as float)) as LDF_BKD
+	  ,YEAR(DepartureDate) * 100 + month(DepartureDate) as DPT_MONTH
+  FROM [RM_Reports].[dbo].[SnapShot]
+  WHERE FlightNumber < 3000 and CapOrLid > 0 and cast([DepartureDate] as date) between '2018-09-01' and '2019-09-01' AND  datediff(day, cast([ProcessDate] as date), cast([DepartureDate] as date)) <= 545
+  GROUP BY CASE WHEN org < dest then concat(Org, Dest) else concat(Dest, org) end, datediff(day, cast([ProcessDate] as date), cast([DepartureDate] as date)), YEAR(DepartureDate) * 100 + month(DepartureDate)
+  ORDER BY ALPHAMKT, DTD, DPT_MONTH

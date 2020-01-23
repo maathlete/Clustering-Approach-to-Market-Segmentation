@@ -1,0 +1,10 @@
+OUTPUT CSVs & K-MEANS LABELING:
+
+***********************************************************
+1. K-Means will randomly name cluster labels each time you run it
+2. This means that though (mostly) the same markets will be in each grouping, THE GROUPINGS *WILL* HAVE DIFFERENT NAMES.
+3. The groups on the CSV file are listed from top to bottom, as they are seen on the graph.
+4. You need to reorder the columns on the csv file to match the colors on the graph.
+	4a. Thus, the uppermost group (whatever color it is) should be the first group output group on the CSV file, and so on and so forth.
+	4b. THEY HAVE TO BE MANUALLY REORDERED EVERY TIME THE NOTEBOOK IS RUN.
+***********************************************************
